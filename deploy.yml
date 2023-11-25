@@ -1,0 +1,14 @@
+# Archivo: deploy.yml
+
+- hosts: servidores_prod
+  tasks:
+    - name: Copiar archivos al servidor
+      copy:
+        src: /ruta/local/del/proyecto
+        dest: /ruta/remota/del/proyecto
+        remote_src: yes
+
+    - name: Reiniciar servicio
+      service:
+        name: mi_servicio
+        state: restarted
