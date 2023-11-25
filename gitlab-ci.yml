@@ -1,0 +1,27 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  NODE_IMAGE: "node:14"
+
+before_script:
+  - npm install
+
+build:
+  stage: build
+  script:
+    - npm run build
+
+test:
+  stage: test
+  script:
+    - npm test
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Desplegar a producción"  # Aquí colocarías los comandos reales de despliegue
+  only:
+    - master  # Despliega solo desde la rama master
